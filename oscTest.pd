@@ -15,13 +15,13 @@
 #X obj 195 116 tabwrite~ array1;
 #X obj 117 73 *~ 100;
 #X obj 53 378 print;
-#X msg 425 217 connect localhost 5000;
-#X msg 503 383 disconnect;
+#X msg 494 344 connect localhost 5000;
+#X msg 528 407 disconnect;
 #X obj 163 289 pack 0 0;
-#X msg 332 331 send /Data \$1 \$2;
+#X msg 362 331 send /Data \$1 \$2;
 #X obj 270 243 import mrpeach;
-#X obj 377 420 udpsend;
-#X obj 363 380 packOSC;
+#X obj 362 424 udpsend;
+#X obj 362 380 packOSC;
 #X obj 138 150 dac~;
 #X msg 118 338 send /test/pitch \$1;
 #X connect 0 0 3 0;
