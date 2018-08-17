@@ -1,0 +1,20 @@
+#N canvas 238 264 450 300 10;
+#X obj 9 27 udpreceive 8000;
+#X obj 9 48 unpackOSC;
+#X obj 9 69 route /data;
+#X floatatom 9 90 5 0 0 0 - - -, f 5;
+#X floatatom 226 31 5 0 0 0 - - -, f 5;
+#X obj 226 72 packOSC;
+#X msg 318 69 connect localhost 8000;
+#X obj 331 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 236 124 udpsend;
+#X msg 225 52 send /data \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 9 0 5 0;
