@@ -1,4 +1,4 @@
-#N canvas 185 42 1175 752 10;
+#N canvas 989 226 1175 752 10;
 #X obj 49 228 random 12;
 #X obj 49 277 + 60;
 #X msg 121 228 72;
@@ -264,17 +264,17 @@
 #X text 276 8 BPM now;
 #X text 112 142 How mamy beats in this bar;
 #X msg 208 323 36 \, 51;
-#X obj 208 383 noteout 3;
+#X obj 208 403 noteout 3;
 #X msg 261 98 1 2 3;
-#X floatatom 662 28 5 0 0 0 - - -, f 5;
-#X obj 662 5 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+#X floatatom 822 28 5 0 0 0 - - -, f 5;
+#X obj 822 5 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
 -1 2;
-#X floatatom 662 137 5 0 0 0 - - -, f 5;
-#X obj 662 109 expr pow(2 \, $f1);
-#X obj 662 55 + 1;
-#X floatatom 637 83 5 0 0 0 - - -, f 5;
-#X floatatom 608 137 5 0 0 0 - - -, f 5;
-#X text 657 -21 divide size;
+#X floatatom 822 137 5 0 0 0 - - -, f 5;
+#X obj 822 109 expr pow(2 \, $f1);
+#X obj 822 55 + 1;
+#X floatatom 797 83 5 0 0 0 - - -, f 5;
+#X floatatom 768 137 5 0 0 0 - - -, f 5;
+#X text 817 -21 divide size;
 #N canvas 663 275 450 300 sendIntByOsc 0;
 #X msg 256 215 disconnect;
 #X obj 40 232 udpsend;
@@ -297,7 +297,7 @@
 #X connect 8 0 10 0;
 #X connect 9 0 1 0;
 #X connect 10 0 2 0;
-#X restore 608 327 pd sendIntByOsc;
+#X restore 768 327 pd sendIntByOsc;
 #N canvas 176 295 450 300 receiveFromOsc 0;
 #X obj 52 135 unpackOSC;
 #X obj 52 194 outlet;
@@ -321,21 +321,21 @@
 #X restore -182 -214 pd receiveFromOsc;
 #X floatatom -182 17 5 0 0 0 - - -, f 5;
 #X floatatom -148 17 5 0 0 0 - - -, f 5;
-#X obj 695 241 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 855 241 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj -182 -8 unpack f f s;
 #X symbolatom -113 18 18 0 0 0 - - -, f 18;
-#X obj 666 215 loadbang;
-#X msg 608 7 123;
-#X obj 608 -27 t b b b b;
-#X obj 608 -62 loadbang;
-#X obj 579 -62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 826 215 loadbang;
+#X msg 768 7 123;
+#X obj 768 -27 t b b b b;
+#X obj 768 -62 loadbang;
+#X obj 739 -62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 577 6 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 737 6 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 608 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 768 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#N canvas 0 40 1058 721 customPulse 0;
+#N canvas -4 23 1058 721 customPulse 1;
 #X obj 21 19 inlet;
 #X text 19 -12 toggle;
 #X obj 72 -2 inlet;
@@ -548,41 +548,41 @@ first than inlet to unpack f...;
 #X connect 14 0 10 1;
 #X connect 15 0 12 0;
 #X connect 16 0 1 0;
-#X restore 725 427 pd forloop;
-#X obj 725 453 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X restore 885 427 pd forloop;
+#X obj 885 453 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 725 344 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 885 344 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 782 400 10;
-#X obj 725 370 t b b b;
-#X obj 666 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X msg 942 400 10;
+#X obj 885 370 t b b b;
+#X obj 826 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X floatatom 558 233 5 0 0 0 - - -, f 5;
-#X obj 608 194 *;
-#X text 520 -109 Activated when any modificaiton on time sequence;
+#X floatatom 718 233 5 0 0 0 - - -, f 5;
+#X obj 768 194 *;
+#X text 680 -109 Activated when any modificaiton on time sequence;
 #X msg 4 184 2;
 #X obj -110 246 sel 1;
 #X msg 346 65 7 3 2 5;
-#X text 527 356 here used to be a patch from number to bang;
+#X text 687 356 here used to be a patch from number to bang;
 #X obj -170 201 mod 2;
 #X obj -170 139 counter;
 #X floatatom -90 155 5 0 0 0 - - -, f 5;
 #X obj -113 120 - 1;
-#X floatatom 712 -160 5 0 0 0 - - -, f 5;
-#X floatatom 722 29 5 0 0 0 - - -, f 5;
+#X floatatom 872 -160 5 0 0 0 - - -, f 5;
+#X floatatom 882 29 5 0 0 0 - - -, f 5;
 #X obj -110 316 + 24;
 #X obj -170 310 + 24;
 #X text 355 23 comment, f 9;
-#X obj 722 -135 spigot;
-#X obj 755 -161 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 882 -135 spigot;
+#X obj 915 -161 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X text 785 -175 use this toggler to enable movement from kinect to
+#X text 945 -175 use this toggler to enable movement from kinect to
 control length;
 #X obj -133 -132 s movementControl;
-#X obj 707 -194 r movementControl;
+#X obj 867 -194 r movementControl;
 #X obj 362 267 s tempoStable;
 #X obj 217 -92 r tempoStable;
-#N canvas 332 201 1108 596 melodyGiver 1;
+#N canvas 332 201 1108 596 melodyGiver 0;
 #X obj 22 109 table major-scale;
 #X obj 22 130 table minor-scale;
 #X obj 21 12 loadbang;
@@ -735,7 +735,7 @@ control length;
 -1 -1;
 #X obj 670 522 table happyScale;
 #X msg 675 490 \; happyScale 0 0 1 2 3 4 5;
-#N canvas 350 258 1015 663 overScale 0;
+#N canvas 350 141 1015 663 overScale 0;
 #X obj 2 25 loadbang;
 #X obj 67 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -750,7 +750,7 @@ control length;
 #X obj 248 418 random 3;
 #X text 691 333 scale from ofx;
 #X obj 765 355 hradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
+-1 -1 4;
 #X floatatom 705 395 5 0 0 0 - - -, f 5;
 #X obj 345 497 mod 2;
 #X floatatom 345 518 5 0 0 0 - - -, f 5;
@@ -1018,16 +1018,14 @@ control length;
 #X obj 253 433 r melodyPulse;
 #X obj -62 113 s divideBeat;
 #X obj 172 433 r divideBeat;
-#X obj 608 217 / 256;
+#X obj 768 217 / 256;
 #X obj 208 352 makenote 40 60;
 #X floatatom -38 -170 5 0 0 0 - - -, f 5;
-#X obj -17 -130 s discreteControl;
-#X obj 346 431 r discreteControl;
 #X floatatom -116 -168 5 0 0 0 - - -, f 5;
 #X msg 363 -87 360;
-#X msg 523 83 255;
-#X obj 523 57 loadbang;
-#X obj 794 13 loadbang;
+#X msg 683 83 255;
+#X obj 683 57 loadbang;
+#X obj 954 13 loadbang;
 #X msg 248 64 2 2 3;
 #X obj 208 288 randomDelayer;
 #X msg 282 244 4;
@@ -1039,8 +1037,100 @@ control length;
 #X msg 162 -94 100;
 #X obj 87 -95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj -71 -41 list2symbol;
-#X msg -39 -81 1 0 1 1;
+#X obj -71 -21 list2symbol;
+#X msg -71 -51 1 0 1 1;
+#X floatatom 584 45 5 0 0 0 - - -, f 5;
+#N canvas 0 23 844 337 drumMachine 0;
+#X obj 86 19 inlet;
+#X obj 25 20 inlet;
+#X msg 74 82 0;
+#X obj 133 76 spigot;
+#X floatatom 25 208 5 0 0 0 - - -, f 5;
+#X obj 25 126 counter 0 15;
+#X obj 25 87 metro;
+#X obj 25 61 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#N canvas 0 503 526 300 bassdrum 1;
+#X obj 45 13 inlet;
+#X floatatom 45 52 5 0 0 0 - - -, f 5;
+#X obj 78 79 tabread bassline;
+#X obj 45 106 spigot;
+#X msg 45 142 36;
+#X obj 45 163 makenote 40 60;
+#X obj 45 194 noteout 3;
+#X obj 244 42 symbol bassline2;
+#X obj 244 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 244 63 set \$1;
+#X obj 364 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 364 63 set \$1;
+#X obj 364 42 symbol bassline;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 5 1 6 1;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 10 0 12 0;
+#X connect 11 0 2 0;
+#X connect 12 0 11 0;
+#X restore 25 249 pd bassdrum;
+#N canvas 0 346 530 300 snare 1;
+#X obj 45 13 inlet;
+#X floatatom 45 52 5 0 0 0 - - -, f 5;
+#X obj 45 106 spigot;
+#X obj 45 163 makenote 40 60;
+#X obj 45 194 noteout 3;
+#X obj 78 79 tabread snareline;
+#X msg 44 142 38;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 3 1 4 1;
+#X connect 5 0 2 1;
+#X connect 6 0 3 0;
+#X restore 103 249 pd snare;
+#X obj 227 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 268 22 loadbang;
+#X obj 231 113 table snareline;
+#X obj 231 133 table bassline;
+#X msg 230 58 \; snareline 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 \; bassline
+0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 \; bassline2 0 1 0 1 0 0 1 0 0 1
+0 1 0 0 1 0 0;
+#X obj 229 155 table bassline2;
+#X obj 25 168 randomDelayer;
+#X connect 0 0 6 1;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 1 0 7 0;
+#X connect 3 0 5 2;
+#X connect 4 0 8 0;
+#X connect 4 0 9 0;
+#X connect 5 0 16 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 7 0 3 1;
+#X connect 10 0 14 0;
+#X connect 11 0 14 0;
+#X connect 16 0 4 0;
+#X restore 503 103 pd drumMachine;
+#X obj 128 30 s t_signal;
+#X obj 503 70 r t_signal;
+#X obj 471 68 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 584 71 / 4;
+#X obj -71 -78 loadbang;
+#X obj -17 -130 s bodyDiscreteControl;
+#X obj 346 431 r bodyDiscreteControl;
 #X connect 0 0 1 0;
 #X connect 0 0 21 0;
 #X connect 0 0 25 0;
@@ -1062,6 +1152,7 @@ control length;
 #X connect 11 1 15 0;
 #X connect 11 2 7 0;
 #X connect 11 4 8 0;
+#X connect 11 6 121 0;
 #X connect 11 9 13 0;
 #X connect 11 12 35 0;
 #X connect 12 0 11 0;
@@ -1084,9 +1175,10 @@ control length;
 #X connect 31 0 64 3;
 #X connect 32 0 7 0;
 #X connect 32 0 33 1;
+#X connect 32 0 119 0;
 #X connect 33 0 34 0;
 #X connect 34 0 92 0;
-#X connect 34 0 110 0;
+#X connect 34 0 108 0;
 #X connect 35 0 33 0;
 #X connect 36 0 32 0;
 #X connect 39 0 100 0;
@@ -1102,9 +1194,9 @@ control length;
 #X connect 48 0 72 0;
 #X connect 51 0 55 0;
 #X connect 51 1 90 0;
-#X connect 51 1 104 0;
+#X connect 51 1 102 0;
 #X connect 51 2 101 0;
-#X connect 51 2 102 0;
+#X connect 51 2 126 0;
 #X connect 54 0 50 3;
 #X connect 55 0 52 0;
 #X connect 55 1 53 0;
@@ -1149,22 +1241,26 @@ control length;
 #X connect 99 0 50 0;
 #X connect 99 0 71 0;
 #X connect 100 0 40 0;
-#X connect 100 1 40 1;
-#X connect 103 0 94 2;
-#X connect 105 0 36 0;
-#X connect 106 0 48 0;
-#X connect 107 0 106 0;
-#X connect 108 0 83 0;
-#X connect 109 0 64 3;
-#X connect 110 0 39 0;
-#X connect 111 0 110 1;
+#X connect 103 0 36 0;
+#X connect 104 0 48 0;
+#X connect 105 0 104 0;
+#X connect 106 0 83 0;
+#X connect 107 0 64 3;
+#X connect 108 0 39 0;
+#X connect 109 0 108 1;
+#X connect 110 0 64 3;
+#X connect 111 0 64 3;
 #X connect 112 0 64 3;
 #X connect 113 0 64 3;
-#X connect 114 0 64 3;
-#X connect 115 0 64 3;
+#X connect 114 0 12 0;
+#X connect 115 0 114 1;
+#X connect 116 0 114 0;
 #X connect 116 0 12 0;
-#X connect 117 0 116 1;
-#X connect 118 0 116 0;
-#X connect 118 0 12 0;
-#X connect 119 0 56 0;
-#X connect 120 0 119 0;
+#X connect 117 0 56 0;
+#X connect 118 0 117 0;
+#X connect 119 0 124 0;
+#X connect 122 0 120 0;
+#X connect 123 0 120 0;
+#X connect 124 0 120 1;
+#X connect 125 0 118 0;
+#X connect 127 0 94 2;
