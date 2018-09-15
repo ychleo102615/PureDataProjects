@@ -1,0 +1,186 @@
+#N canvas 464 12 916 786 10;
+#X obj 160 178 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X text 194 102 Read analog pins (0-5);
+#X text 212 129 Read digital pins (2-13);
+#X text 222 394 DO NOT FORGET TO SET COMPORT TO THE PORT NUMBER MATCHING
+THE ARDUINO ON YOUR SYSTEM!;
+#X msg 124 100 list r a;
+#X msg 142 129 list r d;
+#X obj 91 645 route a d;
+#X floatatom 69 782 5 0 0 0 - - -, f 5;
+#X obj 194 696 print digitals;
+#X obj 91 744 unpack f f f f f f;
+#X floatatom 110 782 5 0 0 0 - - -, f 5;
+#X floatatom 155 783 5 0 0 0 - - -, f 5;
+#X floatatom 196 783 5 0 0 0 - - -, f 5;
+#X floatatom 238 784 5 0 0 0 - - -, f 5;
+#X floatatom 279 784 5 0 0 0 - - -, f 5;
+#X msg 17 310 close;
+#X floatatom 309 216 5 0 255 0 - - -, f 5;
+#X msg 160 205 list w d 13 \$1;
+#X msg 309 239 list w a 9 \$1;
+#X text 180 176 Write (digital) pin 13 \, HIGH (1) or LOW (0);
+#X text 355 215 Set PWM (write analog) of pin 9;
+#X obj 91 581 route list float symbol;
+#X floatatom 122 611 5 0 0 0 - - -, f 5;
+#X symbolatom 170 610 10 0 0 0 - - -, f 10;
+#X obj 254 641 print SPECIAL_CHAR;
+#X text 418 111 Start your messages with the list prefix (or pd2ascii
+will try to send special characters)!;
+#X text 535 93 !!!!!!!!!!!!!!!;
+#X text 540 144 !!!!!!!!!!!!!!!;
+#X text 236 276 pd2ascii is configured here to automatically append
+a carriage return (CR) at the end of messages.;
+#X text 272 572 The route parse the resulting messages. The list \,
+float or symbol types indicate a complete message. Anything else is
+a special character.;
+#X text 445 13 This example uses version 3 of ascii4pd abstractions
+(included with the SimpleMessageSystem download)!;
+#X text 18 15 For use with the Arduino SimpleMessageSystem example
+1;
+#X text 241 535 ascii2pd is configured here to output a message when
+it receives a carriage return (CR).;
+#X text 224 448 On Linux (and probably OSX) you can run a bash (terminal)
+command to find out the number of the Arduino (USB) port: visit http://wiki.dataflow.ws/comport
+for more details.;
+#X text 223 428 On my Debian machine \, port 4 maps to the Arduino
+(ttyUSB0);
+#X obj 112 307 loadbang;
+#X msg 110 332 stopbit 1;
+#X text 225 357 DO NOT FORGET TO SET THE STOPBIT AT 1 OR ERRORS WILL
+OCCUR IN THE STREAM OF DATA!;
+#X obj 330 732 timer;
+#X obj 339 700 t b b;
+#X floatatom 340 766 5 0 0 0 - - -, f 5;
+#X obj 131 376 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 169 153 0;
+#X symbolatom 120 710 10 0 0 0 - - -, f 10;
+#X obj 145 39 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 680 254 unpack f f f, f 30;
+#X floatatom 680 275 5 0 0 0 - - -, f 5;
+#X floatatom 768 276 5 0 0 0 - - -, f 5;
+#X floatatom 857 277 5 0 0 0 - - -, f 5;
+#X obj 680 308 sel 0;
+#X obj 680 339 spigot;
+#X msg 735 311 0;
+#X obj 728 342 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 766 342 1;
+#X obj 682 364 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 734 400 5 0 0 0 - - -, f 5;
+#X obj 734 379 counter 0 9;
+#X obj 736 479 +;
+#X msg 730 456 0;
+#X floatatom 736 500 5 0 0 0 - - -, f 5;
+#X msg 735 595 1;
+#X msg 766 594 -1;
+#X obj 679 581 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 679 641 +;
+#X floatatom 735 616 5 0 0 0 - - -, f 5;
+#X floatatom 679 662 5 0 0 0 - - -, f 5;
+#X obj 679 601 float;
+#X floatatom 619 622 5 0 0 0 - - -, f 5;
+#X msg 687 542 0;
+#X floatatom 679 726 5 0 0 0 - - -, f 5;
+#X obj 91 415 comport 3 115200;
+#X obj 91 279 pd2ascii CR;
+#X obj 91 538 ascii2pd CR;
+#X obj 106 47 inlet;
+#X obj 679 746 outlet;
+#X obj 684 498 inlet;
+#X obj 736 560 sel 0 1;
+#X obj 736 520 t b f;
+#X obj 145 61 metro 0.4;
+#X obj 857 308 sel 0;
+#X obj 857 339 spigot;
+#X msg 912 311 0;
+#X obj 905 342 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 943 342 1;
+#X obj 857 364 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 857 384 outlet;
+#X obj 679 705 expr ($f1 + 20000)%20;
+#X connect 0 0 17 0;
+#X connect 4 0 71 0;
+#X connect 5 0 71 0;
+#X connect 6 0 9 0;
+#X connect 6 0 39 0;
+#X connect 6 1 43 0;
+#X connect 6 1 45 0;
+#X connect 9 0 7 0;
+#X connect 9 1 10 0;
+#X connect 9 2 11 0;
+#X connect 9 3 12 0;
+#X connect 9 4 13 0;
+#X connect 9 5 14 0;
+#X connect 15 0 70 0;
+#X connect 16 0 18 0;
+#X connect 17 0 71 0;
+#X connect 18 0 71 0;
+#X connect 21 0 6 0;
+#X connect 21 1 22 0;
+#X connect 21 2 23 0;
+#X connect 35 0 36 0;
+#X connect 36 0 70 0;
+#X connect 38 0 40 0;
+#X connect 39 0 38 0;
+#X connect 39 1 38 1;
+#X connect 41 0 70 0;
+#X connect 42 0 17 0;
+#X connect 44 0 78 0;
+#X connect 45 0 46 0;
+#X connect 45 1 47 0;
+#X connect 45 2 48 0;
+#X connect 46 0 49 0;
+#X connect 47 0 57 1;
+#X connect 48 0 79 0;
+#X connect 49 0 50 0;
+#X connect 49 0 51 0;
+#X connect 49 1 53 0;
+#X connect 50 0 54 0;
+#X connect 50 0 58 0;
+#X connect 51 0 52 0;
+#X connect 52 0 50 1;
+#X connect 53 0 52 0;
+#X connect 54 0 56 0;
+#X connect 56 0 55 0;
+#X connect 57 0 59 0;
+#X connect 58 0 57 0;
+#X connect 59 0 77 0;
+#X connect 60 0 64 0;
+#X connect 61 0 64 0;
+#X connect 62 0 66 0;
+#X connect 63 0 65 0;
+#X connect 64 0 63 1;
+#X connect 65 0 66 1;
+#X connect 65 0 86 0;
+#X connect 66 0 67 0;
+#X connect 66 0 63 0;
+#X connect 68 0 64 0;
+#X connect 68 0 66 0;
+#X connect 69 0 74 0;
+#X connect 70 0 72 0;
+#X connect 71 0 70 0;
+#X connect 72 0 21 0;
+#X connect 73 0 44 0;
+#X connect 75 0 68 0;
+#X connect 76 0 60 0;
+#X connect 76 1 61 0;
+#X connect 77 0 62 0;
+#X connect 77 1 76 0;
+#X connect 78 0 5 0;
+#X connect 79 0 80 0;
+#X connect 79 0 81 0;
+#X connect 79 1 83 0;
+#X connect 80 0 84 0;
+#X connect 81 0 82 0;
+#X connect 82 0 80 1;
+#X connect 83 0 82 0;
+#X connect 84 0 85 0;
+#X connect 86 0 69 0;
